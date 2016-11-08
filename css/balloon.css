@@ -1,0 +1,52 @@
+.balloon{
+    background-color: #FAFAFA !important;
+}
+
+.balloon-inner{
+    margin-bottom: 42px;
+}
+
+.balloon-inner:last-child{
+    margin-bottom: 16px;
+}
+
+.balloon-title{
+    width: 400px;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    color: #37474F;
+    border-bottom: 2px solid #AED581;;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 4px;
+}
+
+.balloon-url,.balloon-hash,.balloon-parm-name{
+    color: #37474F;
+    width: inherit;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+}
+
+.balloon-url{
+    font-size: 12px;
+}
+
+.other-domain{
+    color: #f44336;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.balloon-hash{
+    color: #2196F3;
+    font-size: 20px;
+}
+
+.balloon-parm-name{
+    color: #4CAF50;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: bold;
+}

@@ -84,17 +84,3 @@ div#pageChecker{
 	top: 3px;
 	box-shadow: none;
 }
-.balloon-title{
-    width: inherit;
-    font-size: 18px;
-    border-bottom: 2px solid #efefef;
-    margin-top: 20px;
-}
-.balloon-disc{
-    width: inherit;
-    font-size: 14px;
-    font-weight: bold;
-}
-.balloon-disc:last-child{
-    margin-bottom: 20px;
-}

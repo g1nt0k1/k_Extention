@@ -3,7 +3,13 @@
     ページ診断用スクリプト
 
  */
-console.log("hoge");
+
+// ballon調整用オブジェクト
+var windowObj = {
+    width  : window.innerWidth,
+    height : window.innerHeight
+}
+
 $(function(){
 
     // タグマネチェッカー
@@ -59,12 +65,17 @@ $(function(){
 
     // initメソッド
     function pageCheck(checklistArr){
+
+
+
         console.log("実行されたよー");
+
         var listObj = {
             domain : checklistArr[0],
             hash   : checklistArr[1],
             parm   : checklistArr[2]
         }
+
         var $aTag = $("a");
         $aTag.each(function(){
             $a = $(this);
@@ -155,39 +166,64 @@ $(function(){
         var pObj = {contents:""};
 
         if(domain != undefined){
+            var editDomain = "";
+            var tmp = domain.split("/");
+            for(var i = 0; i < tmp.length; i++){
+                editDomain += i == 2 ? '/<span class="other-domain">' + tmp[i] + '</span>' : (i != 0 ? '/' : "") + tmp[i];
+             }
             dObj = {
-                contents:'<p class="balloon-title">ドメインが違う遷移が存在します。</p>' +
-                         '<p class="balloon-disc">' + domain + '</p>'
+                contents:'<div class="balloon-inner">' +
+                         '<p class="balloon-title">ドメインが違う遷移が存在します。</p>' +
+                         '<p class="balloon-url">' + editDomain + '</p></div>'
             }
         }
 
         if(hash != undefined){
             hObj = {
-                contents:'<p class="balloon-title">ハッシュが存在します。</p>' +
-                         '<p class="balloon-disc">#' + hash + '</p>'
+                contents:'<div class="balloon-inner">' +
+                         '<p class="balloon-title">ハッシュが存在します。</p>' +
+                         '<p class="balloon-hash">#' + hash + '</p></div>'
             }
         }
 
         if(parm != undefined){
             var tmp = '';
             for(var i = 0; i < parm.length; i++){
-                tmp += '<p class="balloon-disc">' + parm[i] + '</p>';
+                tmp += '<p class="balloon-parm-name">・' + parm[i] + '</p>';
             }
             pObj = {
-                contents:'<p class="balloon-title">パラメータが存在します。</p>' + tmp
+                contents:'<div class="balloon-inner">' +
+                         '<p class="balloon-title">パラメータが存在します。</p>' + tmp + '</div>'
             }
+        }
+
+        // 被らないようにするための処理
+        var balloonPosi  = "";
+        var tagPosi = ($aTag.offset().left) + ($aTag.width() / 2);
+        var centerPosi   = windowObj.width / 2;
+        var diffrence    = centerPosi * 0.1;
+
+        if(0 <= tagPosi && tagPosi < (centerPosi - diffrence)){
+            balloonPosi = " right";
+        }
+        else if((centerPosi - diffrence) < tagPosi && tagPosi < (centerPosi + diffrence)){
+            balloonPosi = "";
+        }
+        else{
+            balloonPosi = " left"
         }
 
         //ホバーした時のアニメーション設定
         $aTag.balloon({
             classname:"balloon",
-            position:'bottom',
+            position:'bottom' + balloonPosi,
             tipSize: 0,
             html:true,
             contents:dObj.contents + hObj.contents + pObj.contents,
             css:{
                 backgroundColor:'#fff',
                 color:'#111',
+                opacity: 1
             }
         });
 
