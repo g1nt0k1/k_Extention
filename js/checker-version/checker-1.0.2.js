@@ -58,20 +58,26 @@ $(function(){
     };
 
     // initメソッド
-    function pageCheck(){
+    function pageCheck(checklistArr){
         console.log("実行されたよー");
+        var listObj = {
+            domain : checklistArr[0],
+            hash   : checklistArr[1],
+            parm   : checklistArr[2]
+        }
         var $aTag = $("a");
         $aTag.each(function(){
             $a = $(this);
-            var d = domainCheck($a);
-            var h = hashCheck($a);
-            var p = parmCheck($a);
+            var d = listObj.domain ? domainCheck($a) : undefined;
+            var h = listObj.hash   ? hashCheck($a)   : undefined;
+            var p = listObj.parm   ? parmCheck($a)   : undefined;
             setHover($a,d,h,p);
         });
     }
 
     // 別ドメインへの遷移が存在しないか確認する。
     function domainCheck($aTag){
+        // console.log("chk domain");
         var textBox = [];
         var href = convertAbsUrl($aTag.attr("href"));
         if(href != null || href != undefined){
@@ -91,6 +97,7 @@ $(function(){
 
     // ハッシュの存在を確認するための関数
     function hashCheck($aTag){
+        // console.log("chk hash");
         var textBox = [];
         var href = $aTag.attr("href");
         if(href != null || href != undefined){
@@ -104,6 +111,7 @@ $(function(){
 
     // パラメータの有無を確認するメソッド
     function parmCheck($aTag){
+        // console.log("chk parm");
         var textBox = [];
         var href = $aTag.attr("href");
         if(href != null || href != undefined){
@@ -186,13 +194,12 @@ $(function(){
         // 懸念点があれば、四角の枠を作成する
         if(domain != undefined || hash != undefined || parm != undefined){
             $aTag.css({
-                border:"4px solid #4CAF50"
+                border:"4px solid #FF0A0A"
             });
         }
     }
 
     chrome.runtime.onMessage.addListener(function(msg,sender,sendResponse){
-        console.log(msg.hoge);
-        pageCheck();
+        pageCheck(msg.checkedlist);
     });
 });

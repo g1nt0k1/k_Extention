@@ -28,12 +28,62 @@ table{border-collapse:collapse;border-spacing:0}
 [hidden~=screen]:not(:active):not(:focus):not(:target){clip:rect(0 0 0 0)!important;position:absolute!important}
 }
 /*# sourceMappingURL=sanitize.css.map */
-.wrapper{
+
+body{
     width: 400px;
     height: 400px;
 }
 
+.wrapper{
+    width: 280px;
+    height: inhert;
+    margin: 0 auto;
+}
 
+label{
+    display:block;
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+h3.title{
+    font-size: 24px;
+    margin-top: 14px;
+    margin-bottom: 20px;
+}
+
+div#pageChecker{
+    width: inherit;
+    height: 40px;
+    text-align: center;
+    vertical-align:middle;
+    background-color: #81C784;
+}
+
+/*
+    button 実装。
+    参考サイト： http://www.nxworld.net/tips/css-only-button-design-and-hover-effects.html
+*/
+
+.btn{
+    position: relative;
+    background-color: #f7d034;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 52px;
+    -webkit-transition: none;
+    transition: none;
+    box-shadow: 0 3px 0 #689F38;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+}
+.btn:hover {
+	top: -4px;
+	box-shadow: 0 7px 0 #689F38;
+}
+.btn:active {
+	top: 3px;
+	box-shadow: none;
+}
 .balloon-title{
     width: inherit;
     font-size: 18px;
