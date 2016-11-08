@@ -1,6 +1,13 @@
-var pageObj = {};
+/*
+
+    ページ診断用スクリプト
+
+ */
+console.log("hoge");
 $(function(){
-    scriptObj = {
+
+    // タグマネチェッカー
+    var scriptObj = {
         $scriptTag : $("script"),
         domain     : document.domain,
         tagCheck : function(){
@@ -50,6 +57,19 @@ $(function(){
         }
     };
 
+    // initメソッド
+    function pageCheck(){
+        console.log("実行されたよー");
+        var $aTag = $("a");
+        $aTag.each(function(){
+            $a = $(this);
+            var d = domainCheck($a);
+            var h = hashCheck($a);
+            var p = parmCheck($a);
+            setHover($a,d,h,p);
+        });
+    }
+
     // 別ドメインへの遷移が存在しないか確認する。
     function domainCheck($aTag){
         var textBox = [];
@@ -88,16 +108,20 @@ $(function(){
         var href = $aTag.attr("href");
         if(href != null || href != undefined){
             if(href.indexOf("?") != -1){
+
                 // 一旦パラメータ部分を取り出す
                 var parmAll = href.split("?")[1];
+
                 // 2つ以上のパラメータがある時に切り取る処理
                 if(parmAll.indexOf("&") >= 0){
                     var cutParm = parmAll.split("&");
                     var parmName = [];
+
                     // パラメータを = を基準に分けて作成する
                     for(var cutLoop = 0; cutLoop < cutParm.length; cutLoop++){
                         parmName[cutLoop] = cutParm[cutLoop].split("=");
                     }
+
                     // パラメータ名だけを取り出す
                     for(var getNameLoop = 0; getNameLoop < parmName.length; getNameLoop++){
                         if(textBox.indexOf(parmName[getNameLoop][0]) < 0){
@@ -159,6 +183,7 @@ $(function(){
             }
         });
 
+        // 懸念点があれば、四角の枠を作成する
         if(domain != undefined || hash != undefined || parm != undefined){
             $aTag.css({
                 border:"4px solid #4CAF50"
@@ -166,18 +191,8 @@ $(function(){
         }
     }
 
-    // initメソッド
-    function pageCheck(){
-        console.log("hoge");
-        var $aTag = $("a");
-        $aTag.each(function(){
-            $a = $(this);
-            var d = domainCheck($a);
-            var h = hashCheck($a);
-            var p = parmCheck($a);
-            setHover($a,d,h,p);
-        });
-    }
-
-
+    chrome.runtime.onMessage.addListener(function(msg,sender,sendResponse){
+        console.log(msg.hoge);
+        pageCheck();
+    });
 });

@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "PagaChecker",
-    "description": "ページ診断のための",
-    "version": "1.0",
+    "description": "ページ診断のための拡張機能",
+    "version": "1.0.2",
     "browser_action": {
         "default_icon": "./icon_38.png",
         "default_popup":"./popup.html"
@@ -14,7 +14,11 @@
                 "https://*/*"
             ],
             "css":["./css/style.css"],
-            "js":["./js/jquery-3.1.1.min.js","./js/jquery.balloon.min.js","./js/checker-version/checker-1.0.2.js"]
+            "js":[
+                "./js/jquery-3.1.1.min.js",
+                "./js/jquery.balloon.min.js",
+                "./js/checker-version/checker-1.0.2.js"
+            ]
         }
     ]
 }
