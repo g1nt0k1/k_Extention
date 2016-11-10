@@ -13,7 +13,7 @@
                 "http://*/*",
                 "https://*/*"
             ],
-            "css":["./css/balloon.css"],
+            "css":["./css/reset.css","./css/balloon.css"],
             "js":[
                 "./js/jquery-3.1.1.min.js",
                 "./js/jquery.balloon.min.js",

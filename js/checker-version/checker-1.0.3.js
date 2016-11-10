@@ -10,6 +10,14 @@ var windowObj = {
     height : window.innerHeight
 }
 
+var infoBoxObj = {
+    domain : [],
+    hash   : [],
+    parm   : []
+};
+
+var parmAllArr = [];
+
 $(function(){
 
     // initメソッド
@@ -18,7 +26,7 @@ $(function(){
         console.log("実行されたよー");
 
         var listObj = {
-            domain : checklistArr[0],
+            url    : checklistArr[0],
             hash   : checklistArr[1],
             parm   : checklistArr[2]
         }
@@ -26,10 +34,10 @@ $(function(){
         var $aTag = $("a");
         $aTag.each(function(){
             $a = $(this);
-            var d = listObj.domain ? domainCheck($a) : undefined;
+            var u = listObj.url    ? domainCheck($a) : undefined;
             var h = listObj.hash   ? hashCheck($a)   : undefined;
             var p = listObj.parm   ? parmCheck($a)   : undefined;
-            setHover($a,d,h,p);
+            setHover($a,u,h,p);
         });
     }
 
@@ -41,6 +49,12 @@ $(function(){
         if(href != null || href != undefined){
             // hrefに「javascript: hoghoge;」という設定もここで切る
             if(href != "" && href.indexOf(document.domain) < 0 && href.indexOf("javascript") < 0){
+
+                // Popup用にドメイン取得
+                var domain = href.split("/")[2];
+                if(infoBoxObj.domain.indexOf(domain) < 0){
+                    infoBoxObj.domain[infoBoxObj.domain.length] = domain;
+                }
                 return href;
             }
         }
@@ -61,7 +75,11 @@ $(function(){
         if(href != null || href != undefined){
             // ハッシュタグのみの場合もここで切ってしまいます。
             if(href.match(/\#(?=(\d|\D))/) != null){
-                return href.split("#")[1];
+                var hash = href.split("#")[1]
+                if(infoBoxObj.hash.indexOf(hash) < 0){
+                    infoBoxObj.hash[infoBoxObj.hash.length] = hash
+                }
+                return hash;
             }
         }
         return undefined;
@@ -90,8 +108,11 @@ $(function(){
 
                     // パラメータ名だけを取り出す
                     for(var getNameLoop = 0; getNameLoop < parmName.length; getNameLoop++){
-                        if(textBox.indexOf(parmName[getNameLoop][0]) < 0){
-                            textBox[textBox.length] = parmName[getNameLoop][0];
+                        textBox[textBox.length] = parmName[getNameLoop][0];
+
+                        // ページ内にある全てのパラメータを取得する
+                        if(infoBoxObj.parm.indexOf(parmName[getNameLoop][0]) < 0){
+                            infoBoxObj.parm[infoBoxObj.parm.length] = parmName[getNameLoop][0];
                         }
                     }
                     return textBox;
@@ -107,23 +128,23 @@ $(function(){
     }
 
     // ホバーをセットするメソッド
-    function setHover($aTag,domain,hash,parm){
-        var dObj = {contents:""};
+    function setHover($aTag,url,hash,parm){
+        var uObj = {contents:""};
         var hObj = {contents:""};
         var pObj = {contents:""};
 
-        if(domain != undefined){
-            var editDomain = "";
-            var tmp = domain.split("/");
+        if(url != undefined){
+            var editUrl = "";
+            var tmp = url.split("/");
 
             // ドメイン部分を強調表示するために切り取る
             for(var i = 0; i < tmp.length; i++){
-                editDomain += i == 2 ? '/<span class="other-domain">' + tmp[i] + '</span>' : (i != 0 ? '/' : "") + tmp[i];
+                editUrl += i == 2 ? '/<span class="other-domain">' + tmp[i] + '</span>' : (i != 0 ? '/' : "") + tmp[i];
              }
-            dObj = {
+            uObj = {
                 contents:'<div class="balloon-inner">' +
                          '<p class="balloon-title">ドメインが違う遷移が存在します。</p>' +
-                         '<p class="balloon-url">' + editDomain + '</p></div>'
+                         '<p class="balloon-url">' + editUrl + '</p></div>'
             }
         }
 
@@ -148,19 +169,19 @@ $(function(){
 
         // 被らないようにするための処理
         var balloonPosi  = "";
-        var tagPosi = ($aTag.offset().left) + ($aTag.width() / 2);
-        var centerPosi   = windowObj.width / 2;
-        var diffrence    = centerPosi * 0.1;
-
-        if(0 <= tagPosi && tagPosi < (centerPosi - diffrence)){
-            balloonPosi = " right";
-        }
-        else if((centerPosi - diffrence) < tagPosi && tagPosi < (centerPosi + diffrence)){
-            balloonPosi = "";
-        }
-        else{
-            balloonPosi = " left"
-        }
+        // var tagPosi = ($aTag.offset().left) + ($aTag.width() / 2);
+        // var centerPosi   = windowObj.width / 2;
+        // var diffrence    = centerPosi * 0.1;
+        //
+        // if(0 <= tagPosi && tagPosi < (centerPosi - diffrence)){
+        //     balloonPosi = " right";
+        // }
+        // else if((centerPosi - diffrence) < tagPosi && tagPosi < (centerPosi + diffrence)){
+        //     balloonPosi = "";
+        // }
+        // else{
+        //     balloonPosi = " left"
+        // }
 
         //ホバーした時のアニメーション設定
         $aTag.balloon({
@@ -168,7 +189,7 @@ $(function(){
             position:'bottom' + balloonPosi,
             tipSize: 0,
             html:true,
-            contents:dObj.contents + hObj.contents + pObj.contents,
+            contents:uObj.contents + hObj.contents + pObj.contents,
             css:{
                 backgroundColor:'#fff',
                 color:'#111',
@@ -177,7 +198,7 @@ $(function(){
         });
 
         // 懸念点があれば、四角の枠を作成する
-        if(domain != undefined || hash != undefined || parm != undefined){
+        if(url != undefined || hash != undefined || parm != undefined){
             $aTag.css({
                 border:"4px solid #FF0A0A"
             });

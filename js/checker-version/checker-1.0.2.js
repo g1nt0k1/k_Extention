@@ -199,25 +199,25 @@ $(function(){
 
         // 被らないようにするための処理
         var balloonPosi  = "";
-        var tagPosi = ($aTag.offset().left) + ($aTag.width() / 2);
-        var centerPosi   = windowObj.width / 2;
-        var diffrence    = centerPosi * 0.1;
-
-        if(0 <= tagPosi && tagPosi < (centerPosi - diffrence)){
-            balloonPosi = " right";
-        }
-        else if((centerPosi - diffrence) < tagPosi && tagPosi < (centerPosi + diffrence)){
-            balloonPosi = "";
-        }
-        else{
-            balloonPosi = " left"
-        }
+        // var tagPosi = ($aTag.offset().left) + ($aTag.width() / 2);
+        // var centerPosi   = windowObj.width / 2;
+        // var diffrence    = centerPosi * 0.1;
+        //
+        // if(0 <= tagPosi && tagPosi < (centerPosi - diffrence)){
+        //     balloonPosi = " right";
+        // }
+        // else if((centerPosi - diffrence) < tagPosi && tagPosi < (centerPosi + diffrence)){
+        //     balloonPosi = "";
+        // }
+        // else{
+        //     balloonPosi = " left"
+        // }
 
         //ホバーした時のアニメーション設定
         $aTag.balloon({
             classname:"balloon",
             position:'bottom' + balloonPosi,
-            tipSize: 0,
+            tipSize: 10,
             html:true,
             contents:dObj.contents + hObj.contents + pObj.contents,
             css:{

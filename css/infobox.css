@@ -1,0 +1,71 @@
+/* clearfix */
+.clearfix:after {
+    content:" ";
+    display:block;
+    clear:both;
+}
+
+
+/* popBox */
+
+.popBox{
+    width: 360px;
+    height: 800px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    border: 1px solid black;
+    background-color: rgba(248,248,248,0.6);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pb_header{
+    width: 96%;
+    margin: 12px auto 18px;
+}
+
+.pb_title{
+    float: left;
+    font-size: 24px;
+}
+
+.pb_close{
+    float: right;
+    cursor: pointer;
+}
+
+/* box Wrap*/
+
+.pb_content{
+    clear: both;
+}
+
+.pb_content h2{
+    font-size: 20px;
+    width: 96%;
+    margin: 0 auto;
+    border-bottom: 2px solid #AED581;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+}
+
+.listDomain li,
+.listHash li,
+.listParm li{
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 8px;
+    margin-bottom: 8px;
+}
+
+.listDomain li{
+    color: #f44336;
+}
+
+.listHash li{
+    color: #2196F3;
+}
+
+.listParm li{
+    color: #4CAF50;
+}
