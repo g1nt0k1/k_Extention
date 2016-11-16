@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PagaChecker",
     "description": "ページ診断のための拡張機能",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "browser_action": {
         "default_icon": "./icon_38.png",
         "default_popup":"./popup.html"
@@ -17,7 +17,16 @@
             "js":[
                 "./js/jquery-3.1.1.min.js",
                 "./js/jquery.balloon.min.js",
-                "./js/checker-version/checker-1.0.3.js"
+                "./js/popup.js",
+                "./js/checker-version/checker-1.0.4.js"
+            ],
+            "web_accessible_resources":[
+                "./fonts/fontawesome-webfont.eot",
+                "./fonts/fontawesome-webfont.svg",
+                "./fonts/fontawesome-webfont.ttf",
+                "./fonts/fontawesome-webfont.woff",
+                "./fonts/fontawesome-webfont.woff2",
+                "./fonts/FontAwesome.otf"
             ]
         }
     ]

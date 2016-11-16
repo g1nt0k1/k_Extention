@@ -4,12 +4,6 @@
 
  */
 
-// ballon調整用オブジェクト
-var windowObj = {
-    width  : window.innerWidth,
-    height : window.innerHeight
-}
-
 // popup作成するためのオブジェクト
 var infoBoxObj = {
     domain : [],
@@ -46,7 +40,6 @@ $(function(){
         setPopup(listObj);
     }
 
-
     // ホバーをセットするメソッド
     function setHover($aTag,url,hash,parm){
         var uObj = {contents:""};
@@ -72,7 +65,7 @@ $(function(){
             hObj = {
                 contents:'<div class="balloon-inner">' +
                          '<p class="balloon-title">ハッシュが存在します。</p>' +
-                         '<p class="balloon-hash">#' + hash + '</p></div>'
+                         '<p class="balloon-hash">' + hash + '</p></div>'
             }
         }
 
@@ -88,26 +81,40 @@ $(function(){
         }
 
         // 被らないようにするための処理
-        var balloonPosi  = "";
-        // var tagPosi = ($aTag.offset().left) + ($aTag.width() / 2);
-        // var centerPosi   = windowObj.width / 2;
-        // var diffrence    = centerPosi * 0.1;
-        //
-        // if(0 <= tagPosi && tagPosi < (centerPosi - diffrence)){
-        //     balloonPosi = " right";
-        // }
-        // else if((centerPosi - diffrence) < tagPosi && tagPosi < (centerPosi + diffrence)){
-        //     balloonPosi = "";
-        // }
-        // else{
-        //     balloonPosi = " left"
-        // }
+        var top_or_bottom  = "";
+        var left_or_right  = "";
+        var bodyWidth      = document.body.clientWidth;
+        var bodyHeight     = document.body.clientHeight;
+        var aPosition = {
+            left     : $aTag.offset().left,
+            rigth    : this.left + $aTag.width(),
+            top      : $aTag.offset().top,
+        }
+
+        // Top or Bottom
+        if(bodyHeight - 100 <= aPosition.top){
+            top_or_bottom = "top"
+        }
+        else{
+            top_or_bottom = "bottom"
+        }
+
+        // Left or Right or Center
+        if(0 <= aPosition.left && aPosition.left <= 100){
+            left_or_right = " right";
+        }
+        else if(bodyWidth - 100 <= aPosition.right && aPosition.right <= bodyWidth){
+            left_or_right = " left"
+        }
+        else{
+            left_or_right = ""; //真ん中に出力されてもOK
+        }
 
         //ホバーした時のアニメーション設定
         $aTag.balloon({
             classname:"balloon",
-            position:'bottom' + balloonPosi,
-            tipSize: 0,
+            position:top_or_bottom + left_or_right,
+            tipSize: 16,
             html:true,
             contents:uObj.contents + hObj.contents + pObj.contents,
             css:{
@@ -176,9 +183,9 @@ $(function(){
         if(href != null || href != undefined){
             // ハッシュタグのみの場合もここで切ってしまいます。
             if(href.match(/\#(?=(\d|\D))/) != null){
-                var hash = href.split("#")[1]
+                var hash = "#" + href.split("#")[1]
                 if(infoBoxObj.hash.indexOf(hash) < 0){
-                    infoBoxObj.hash[infoBoxObj.hash.length] = hash
+                    infoBoxObj.hash[infoBoxObj.hash.length] = hash;
                 }
                 return hash;
             }
@@ -192,13 +199,13 @@ $(function(){
         var textBox = [];
         var href = $aTag.attr("href");
         if(href != null || href != undefined){
-            if(href.indexOf("?") != -1){
+            if(href.indexOf("?") > -1){
 
                 // 一旦パラメータ部分のみ切り出す
                 var parmAll = href.split("?")[1];
 
                 // パラメータが二つ以上の場合
-                if(parmAll.indexOf("&") >= 0){
+                if(parmAll.indexOf("&") > -1){
                     var cutParm = parmAll.split("&");
                     var parmName = [];
 
