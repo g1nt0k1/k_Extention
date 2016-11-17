@@ -230,7 +230,7 @@ $(function(){
                     if(infoBoxObj.parm.indexOf(cutParm) < 0){
                         infoBoxObj.parm[infoBoxObj.parm.length] = cutParm;
                     }
-                    return cutParm;
+                    return new Array(cutParm);
                 }
             }
             else{
