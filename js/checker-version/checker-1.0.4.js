@@ -83,16 +83,18 @@ $(function(){
         // 被らないようにするための処理
         var top_or_bottom  = "";
         var left_or_right  = "";
-        var bodyWidth      = document.body.clientWidth;
-        var bodyHeight     = document.body.clientHeight;
+        var bodyWidth      = $("body").width();
+        var bodyHeight     = $("body").height();
         var aPosition = {
             left     : $aTag.offset().left,
+            wCenter  : $aTag.offset().left + $aTag.width() / 2,
             rigth    : this.left + $aTag.width(),
             top      : $aTag.offset().top,
+            hCenter  : $aTag.offset().top + $aTag.height() / 2
         }
 
         // Top or Bottom
-        if(bodyHeight - 100 <= aPosition.top){
+        if(bodyHeight - 200 <= aPosition.top){
             top_or_bottom = "top"
         }
         else{
@@ -100,10 +102,10 @@ $(function(){
         }
 
         // Left or Right or Center
-        if(0 <= aPosition.left && aPosition.left <= 100){
+        if(0 <= aPosition.wCenter && aPosition.wCenter <= 100){
             left_or_right = " right";
         }
-        else if(bodyWidth - 100 <= aPosition.right && aPosition.right <= bodyWidth){
+        else if(bodyWidth - 100 <= aPosition.hCenter && aPosition.hCenter <= bodyWidth){
             left_or_right = " left"
         }
         else{
@@ -124,27 +126,25 @@ $(function(){
             }
         });
 
-        // // 懸念点があれば、四角の枠を作成する
-        // var cssObj = {};
-           var borderColor = "#4CAF50";
-        // if(url != undefined){
-        //     borderColor = "#f44336";
-        // }
-        //
-        // if(hash != undefined){
-        //     borderColor = "#2196F3";
-        // }
-        //
-        // if(parm != undefined){
-        //     borderColor = "#4CAF50";
-        // }
+        // 懸念点があれば、四角の枠を作成する
+        // 一番最初に当てはまった色に選択される
+        var borderColor = "#4CAF50";
+        if(url != undefined){
+            borderColor = "#f44336";
+        }
+        else if(hash != undefined){
+            borderColor = "#2196F3";
+        }
+        else if(parm != undefined){
+            borderColor = "#4CAF50";
+        }
 
 
 
         if(url != undefined || hash != undefined || parm != undefined){
 
             $aTag.css({
-                border:"4px solid #4CAF50"
+                border:"4px solid " + borderColor
             });
         }
     }
