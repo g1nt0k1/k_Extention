@@ -61,7 +61,7 @@
     overflow: auto;
 }
 
-.pb_content h2{
+.listTitle,.tagCheckTitle{
     font-size: 18px;
     font-weight: bold;
     width: 96%;
@@ -71,15 +71,15 @@
     margin-bottom: 12px;
 }
 
-.listdomain,
-.listhash,
-.listparm{
+.tagCheckTitle{
+    font-size: 14px;
+}
+
+.listWrap{
     margin-bottom: 40px;
 }
 
-.listdomain li,
-.listhash li,
-.listparm li{
+.listWrap li{
     font-size: 16px;
     font-weight: bold;
     padding-left: 8px;

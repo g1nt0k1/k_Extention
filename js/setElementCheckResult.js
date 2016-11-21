@@ -1,17 +1,17 @@
-function setPopup(listObj){
+function setElementCheckResult(listObj){
     var popbox = '<div class="popBox">'
                     + '<div class="pb_header clearfix">'
                         + '<h1 class="pb_title tb_center">ページ情報一覧</h1>'
                         + '<i class="pb_close fa fa-2x fa-window-close tb_center" aria-hidden="true"></i>'
                     + '</div>'
                     + '<div class="pb_content">'
-                            + '<div class="listdomain">'
+                            + '<div class="listdomain listWrap">'
                                 + '<h2 class="listTitle">ページ内に含まれている別ドメイン</h2>'
                             + '</div>'
-                            + '<div class="listhash">'
+                            + '<div class="listhash listWrap">'
                                 + '<h2 class="listTitle">ページ内に含まれているハッシュ</h2>'
                             + '</div>'
-                            + '<div class="listparm">'
+                            + '<div class="listparm listWrap">'
                                 + '<h2 class="listTitle">ページ内に含まれているパラメータ</h2>'
                             + '</div>'
                     + '</div>'
@@ -23,12 +23,12 @@ function setPopup(listObj){
     for(var prop in infoBoxObj){
 
         // 引数のlistObjとinfoBoxObjの要素名は完全に対応している。
-        var li_html = listObj[prop] ? makeInfoList(infoBoxObj[prop],prop) : "<ul><li>計測しておりません</li></ul>";
+        var li_html = listObj[prop] ? makeResultList(infoBoxObj[prop],prop) : "<ul><li>計測しておりません</li></ul>";
         $(li_html).appendTo($(".list" + prop));
     }
 
     // Listを作成する内部関数
-    function makeInfoList(arr,listName){
+    function makeResultList(arr,listName){
         var html = "<ul>";
         var disc = "";
         if(arr.length > 0){
@@ -41,11 +41,9 @@ function setPopup(listObj){
             html += "<li>存在しませんでした。</li>";
         }
 
-
         return html + "</ul>" + disc;
     }
 
-    // infoboxから
     function makeDiscription(listName){
         var infoDiscription = "";
         if(listName == "domain"){

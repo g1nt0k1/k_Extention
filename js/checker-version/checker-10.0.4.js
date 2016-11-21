@@ -37,9 +37,7 @@ $(function(){
             setHover($a,d,h,p);
         });
 
-        setElementCheckResult(listObj);
-        setTagCheckResult();
-
+        setPopup(listObj);
     }
 
     // ホバーをセットするメソッド
@@ -114,6 +112,20 @@ $(function(){
             left_or_right = ""; //真ん中に出力されてもOK
         }
 
+        //ホバーした時のアニメーション設定
+        // $aTag.balloon({
+        //     classname:"balloon",
+        //     position:top_or_bottom + left_or_right,
+        //     tipSize: 16,
+        //     html:true,
+        //     contents:uObj.contents + hObj.contents + pObj.contents,
+        //     css:{
+        //         backgroundColor:'#fff',
+        //         color:'#111',
+        //         opacity: 1
+        //     }
+        // });
+
         // 懸念点があれば、四角の枠を作成する
         // 一番最初に当てはまった色に選択される
         var borderColor = "#4CAF50";
@@ -131,7 +143,7 @@ $(function(){
 
         if(url != undefined || hash != undefined || parm != undefined){
 
-            // ホバー部分のハイライト表示作成
+            // タグ上にホバーを作成する
             var $aParent = $aTag.parent();
 
             var $ex_wrap = $("<div id='k_ex_border_wrap'></div>").appendTo("body");
