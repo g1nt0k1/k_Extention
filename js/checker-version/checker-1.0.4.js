@@ -89,9 +89,10 @@ $(function(){
         var bodyHeight     = $("body").height();
         var aPosition = {
             left     : $aTag.offset().left,
-            wCenter  : $aTag.offset().left + $aTag.width() / 2,
             rigth    : this.left + $aTag.width(),
             top      : $aTag.offset().top,
+            bottom   : this.top + $aTag.height(),
+            wCenter  : $aTag.offset().left + $aTag.width() / 2,
             hCenter  : $aTag.offset().top + $aTag.height() / 2
         }
 
