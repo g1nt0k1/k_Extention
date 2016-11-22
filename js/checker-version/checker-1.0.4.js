@@ -29,6 +29,9 @@ $(function(){
         }
 
         var $aTag = $("a");
+
+        // ホバーの設定用の箱を先に用意する。
+        $("<div id='k_ex_border_wrap'></div>").appendTo("body");
         $aTag.each(function(){
             $a = $(this);
             var d = listObj.domain ? domainCheck($a) : undefined;
@@ -134,8 +137,6 @@ $(function(){
 
             // ホバー部分のハイライト表示作成
             var $aParent = $aTag.parent();
-
-            var $ex_wrap = $("<div id='k_ex_border_wrap'></div>").appendTo("body");
             var $ex_div  = $("<div class='ex_border_'></div>").appendTo("#k_ex_border_wrap");
 
             aObj = {
