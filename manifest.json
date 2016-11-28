@@ -16,7 +16,7 @@
             "css":["./css/reset.css","./css/font-awesome.min.css","./css/balloon.css","./css/infobox.css"],
             "js":[
                 "./js/jquery-3.1.1.min.js",
-                "./js/jquery.balloon.min.js",
+                "./js/jquery.balloon.js",
                 "./js/setElementCheckResult.js",
                 "./js/setTagCheckResult.js",
                 "./js/checker-version/checker-1.0.4.js"

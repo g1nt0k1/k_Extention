@@ -58,7 +58,6 @@
 }
 
 .pb_close{
-    text-decoration: none;
     font-size: 24px;
     font-weight: bold;
     float: right;
@@ -68,10 +67,12 @@
 
 .pb_close a{
     color: #212121;
+    text-decoration: none;
 }
 
 .pb_close a:hover{
     color: #212121;
+    text-decoration: underline;
 }
 
 
@@ -136,6 +137,7 @@
 }
 
 .discription{
+    text-align: left;
     font-size: 14px;
     font-weight: bold;
 }
@@ -151,4 +153,10 @@
 
 .discription a:link{
     color: #2196F3;
+}
+
+.tagId{
+    margin-top: 10px;
+    font-size: 16px;
+    color: #283593;
 }

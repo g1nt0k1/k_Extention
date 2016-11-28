@@ -63,12 +63,12 @@ function tagCheck(){
             result : false,
             id     : "",
             title  : "<h3 class='tagCheckTitle'>Googleタグマネージャーが設置されています。</h3>",
-            text   : "<p class='discription'>GoogleタグマネージャーでKaizenのタグを埋め込む場合は、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206075222'>こちら</a>のヘルプページをご参照ください。</p>"
+            text   : "<p class='discription'>GoogleタグマネージャーでKaizenタグを埋める場合は、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206075222'>こちら</a>のヘルプをご参照ください。</p>"
         },
         ytm  : {
             result : false,
             title  : "<h3 class='tagCheckTitle'>Yahoo!タグマネージャーが設置されています。</h3>",
-            text   : "<p class='discription'>Yahoo!タグマネージャーでKaizenのタグを埋め込む場合は、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206227541'>こちら</a>のヘルプページをご参照ください。</p>"
+            text   : "<p class='discription'>Yahoo!タグマネージャーでKaizenタグを埋める場合は、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206227541'>こちら</a>のヘルプをご参照ください。</p>"
         },
     };
 
@@ -78,7 +78,7 @@ function tagCheck(){
             if(src.indexOf("googletagmanager.com") > -1 && !resultObj.gtm.result){
                 var cutSrc = src.split("?")[1];
                 resultObj.gtm.id     = cutSrc.split("-")[1];
-                resultObj.gtm.text += "<p class='discription'>タグマネージャーID: " + resultObj.gtm.id + "</p>";
+                resultObj.gtm.text += "<p class='discription tagId'>タグマネージャーID: " + resultObj.gtm.id + "</p>";
                 resultObj.gtm.result = true;
             }
             else if(src.indexOf("yjtag") > -1 && !resultObj.ytm){
@@ -95,12 +95,12 @@ function analyticsCheck(){
         ga   : {
             result : false,
             title  : "<h3 class='tagCheckTitle'>Googleアナリティクスが設置されています。</h3>",
-            text   : "<p class='discription'>GoogleアナリティクスをKaizenと連携する場合には、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206075202'>こちら</a>のヘルプページをご参照ください。</p>"
+            text   : "<p class='discription'>GoogleアナリティクスをKaizenと連携する場合には、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206075202'>こちら</a>のヘルプをご参照ください。</p>"
         },
         sa   : {
             result : false,
             title  : "<h3 class='tagCheckTitle'>AdobeAnalytics(旧 SiteCatalyst)が設置されています。</h3>",
-            text   : "<p class='discription'>AdobeAnalyticsをKaizenと連携する場合には、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206227501'>こちら</a>のヘルプページをご参照ください。</p>"
+            text   : "<p class='discription'>AdobeAnalyticsをKaizenと連携する場合には、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206227501'>こちら</a>のヘルプをご参照ください。</p>"
         }
     };
     $scriptTag.each(function(){

@@ -90,32 +90,14 @@ $(function(){
         var left_or_right  = "";
         var bodyWidth      = $("body").width();
         var bodyHeight     = $("body").height();
-        var aPosition = {
-            left     : $aTag.offset().left,
-            rigth    : this.left + $aTag.width(),
-            top      : $aTag.offset().top,
-            bottom   : this.top + $aTag.height(),
-            wCenter  : $aTag.offset().left + $aTag.width() / 2,
-            hCenter  : $aTag.offset().top + $aTag.height() / 2
-        }
+        var aTop           = $aTag.offset().top;
 
         // Top or Bottom
-        if(bodyHeight - 200 <= aPosition.top){
+        if(bodyHeight - 200 <= aTop){
             top_or_bottom = "top"
         }
         else{
             top_or_bottom = "bottom"
-        }
-
-        // Left or Right or Center
-        if(0 <= aPosition.wCenter && aPosition.wCenter <= 100){
-            left_or_right = " right";
-        }
-        else if(bodyWidth - 100 <= aPosition.hCenter && aPosition.hCenter <= bodyWidth){
-            left_or_right = " left"
-        }
-        else{
-            left_or_right = ""; //真ん中に出力されてもOK
         }
 
         // 懸念点があれば、四角の枠を作成する
@@ -157,8 +139,7 @@ $(function(){
 
             $ex_div.balloon({
                 classname:"balloon",
-                position:top_or_bottom + left_or_right,
-                tipSize: 16,
+                position:top_or_bottom,
                 html:true,
                 contents:uObj.contents + hObj.contents + pObj.contents,
                 css:{
