@@ -3,7 +3,7 @@ function setPopbox(){
         var popbox = '<div class="popBox">'
                         + '<div class="pb_header clearfix">'
                             + '<h1 class="pb_title tb_center f_black">ページ情報一覧</h1>'
-                            + '<p  class="pb_close tb_center"><a class="f_black" aria-hidden="true">X</a></p>'
+                            + '<p  class="pb_close tb_center"><a class="pb_close_btn f_black" aria-hidden="true">X</a></p>'
                         + '</div>'
                         + '<div class="pb_content">'
                                 + '<div class="listdomain contentWrap">'
@@ -21,3 +21,9 @@ function setPopbox(){
         $(popbox).appendTo($("body"));
     }
 }
+
+$(".pb_close_btn").on({
+    click : function(){
+        $(".popBox").hide();
+    }
+})

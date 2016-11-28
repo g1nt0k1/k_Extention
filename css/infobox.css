@@ -65,12 +65,12 @@
     margin-right: 10px;
 }
 
-.pb_close a{
+.pb_close a.pb_close_btn{
     color: #212121;
     text-decoration: none;
 }
 
-.pb_close a:hover{
+.pb_close a.pb_close_btn:hover{
     color: #212121;
     text-decoration: underline;
 }
