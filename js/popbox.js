@@ -24,6 +24,6 @@ function setPopbox(){
 
 $(".pb_close_btn").on({
     click : function(){
-        $(".popBox").hide();
+        $(".popBox").toglleClahide();
     }
-})
+});
