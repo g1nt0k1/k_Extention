@@ -40,9 +40,11 @@ $(function(){
             setHover($a,d,h,p);
         });
 
-        setElementCheckResult(listObj);
-        setTagCheckResult();
-
+        // popUpBox
+        if(setPopBox()){
+            setElementCheckResult(listObj);
+            setTagCheckResult();
+        }
     }
 
     // ホバーをセットするメソッド

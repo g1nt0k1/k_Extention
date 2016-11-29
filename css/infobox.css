@@ -24,12 +24,10 @@
  */
 
 .popBox{
-    width: 360px;
-    height: 360px;
     position: fixed;
     top: 10px;
     left: 10px;
-    border: 1px solid black;
+    border: 1px solid #78909C;
     background-color: rgba(248,248,248,0.6);
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
     z-index: 0;
@@ -57,23 +55,57 @@
     margin: 0 0 0 10px;
 }
 
-.pb_close{
+.pos_slide_wrap{
+    float:right;
+}
+
+.pb_leftBtn,.pb_rightBtn{
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+    margin-right: 12px;
+    font-size:24px;
+    color: #FAFAFA;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.pb_leftBtn:hover,
+.pb_rightBtn:hover{
+    color: #448AFF;
+    background-color: #C5E1A5;
+    text-decoration: underline;
+}
+
+.pb_leftBtn{
+    float: left;
+}
+
+.pb_rightBtn{
+    float: right;
+}
+
+.pb_close_btn{
+    width: 40px;
+    height: 40px;
     font-size: 24px;
     font-weight: bold;
+    border-radius: 50%;
+    color: #FAFAFA;
+    text-align: center;
     float: right;
     cursor: pointer;
     margin-right: 10px;
 }
 
-.pb_close a.pb_close_btn{
-    color: #212121;
-    text-decoration: none;
-}
-
-.pb_close a.pb_close_btn:hover{
-    color: #212121;
+.pb_close_btn:hover{
+    color: #ef5350;
+    background-color: #C5E1A5;
     text-decoration: underline;
 }
+
 
 
 /*
