@@ -1,6 +1,6 @@
 /*
     setTagCheckResult.js
-    ver 1.0.1
+    ver 1.0.0
     Last Update 2016/11/21
  */
 
