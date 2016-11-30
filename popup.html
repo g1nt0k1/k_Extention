@@ -9,23 +9,35 @@
 </head>
 <body>
     <div class="wrapper">
-        <h3 class="title">調べたい項目を選択してください。</h3>
+        <header><h3 class="title">ページチェッカー</h3></header>
         <form name="checklist">
-            <!-- <label>
-                <input type="checkbox" name="item" value="tag" checked="checked">タグマネージャーチェック
-            </label>
-            <label>
-                <input type="checkbox" name="item" value="analytics" checked="checked">アナリティクスチェック
-            </label> -->
-            <label>
-                <input type="checkbox" name="item" value="domain" checked="checked">ドメインチェック
-            </label>
-            <label>
-                <input type="checkbox" name="item" value="hash" checked="checked">ハッシュタグチェック
-            </label>
-            <label>
-                <input type="checkbox" name="item" value="parm" checked="checked">パラメータチェック
-            </label>
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" name="item" value="tag" checked="checked">タグマネージャーチェック
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="item" value="analytics" checked="checked">アナリティクスチェック
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="item" value="domain" checked="checked">ドメインチェック
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="item" value="hash" checked="checked">ハッシュタグチェック
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="item" value="parm" checked="checked">パラメータチェック
+                    </label>
+                </li>
+            </ul>
         </form>
         <div id="pageChecker" class="btn">チェックするぞー！</div>
     </div>

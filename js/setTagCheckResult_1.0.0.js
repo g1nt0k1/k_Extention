@@ -7,7 +7,7 @@
 
 var $scriptTag = $("script");
 
-function setTagCheckResult(){
+function setTagCheckResult(tagChkFlg){
     var ResultObj = {
         tag : {
             result : tagCheck(),
@@ -20,28 +20,33 @@ function setTagCheckResult(){
     };
 
     var collectHtml = "";
-
     for(var prop in ResultObj){
-        ResultObj[prop].html = makeDiscription(ResultObj[prop].result);
+        ResultObj[prop].html = makeDiscription(ResultObj[prop].result,tagChkFlg[prop]);
         collectHtml += ResultObj[prop].html;
     }
     $(collectHtml).prependTo(".pb_content");
 }
 
 // 結果を表示するためのタグ生成
-function makeDiscription(Obj){
-
+function makeDiscription(Obj,Flg){
     var listTitle    = "";
     var htmlContents = "";
-
     for(var prop in Obj){
-        if(Obj[prop].result){
-            htmlContents += "<div class='listWrap'>" + Obj[prop].title + Obj[prop].text + '</div>';
+        if(Flg){
+            if(prop != "type"){
+                if(Obj[prop].result){
+                    htmlContents += "<div class='listWrap'>" + Obj[prop].title + Obj[prop].text + '</div>';
+                }
+            }
+        }
+        else{
+            htmlContents = "<div class='listWrap'><p class='discription'>設置確認を行なっていません。</p></div>";
         }
     }
+
     if(htmlContents == ""){
-        htmlContents = "<div class='listWrap'><p class='discription'>設置されていませんでした。</p></div>";
-    }
+         htmlContents = "<div class='listWrap'><p class='discription'>設置されていませんでした。</p></div>";
+     }
 
     switch(Obj.type){
         case "tag":
@@ -103,6 +108,7 @@ function analyticsCheck(){
             text   : "<p class='discription'>AdobeAnalyticsをKaizenと連携する場合には、<a target='_blank' href='https://support.kaizenplatform.net/hc/ja/articles/206227501'>こちら</a>のヘルプをご参照ください。</p>"
         }
     };
+
     $scriptTag.each(function(){
         var src = $(this).attr("src");
         if(src != null || src != undefined){

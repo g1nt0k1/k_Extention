@@ -22,11 +22,16 @@ $(function(){
 
         // 何をチェックするのかをオブジェクト取得
         // bool型です
-        var listObj = {
-            domain : checklistArr[0],
-            hash   : checklistArr[1],
-            parm   : checklistArr[2]
-        }
+        var tagChkFlg = {
+            tag       : checklistArr[0],
+            analytics : checklistArr[1]
+        };
+
+        var listChkFlg = {
+            domain : checklistArr[2],
+            hash   : checklistArr[3],
+            parm   : checklistArr[4]
+        };
 
         var $aTag = $("a");
 
@@ -34,16 +39,16 @@ $(function(){
         $("<div id='k_ex_border_wrap'></div>").appendTo("body");
         $aTag.each(function(){
             $a = $(this);
-            var d = listObj.domain ? domainCheck($a) : undefined;
-            var h = listObj.hash   ? hashCheck($a)   : undefined;
-            var p = listObj.parm   ? parmCheck($a)   : undefined;
+            var d = listChkFlg.domain ? domainCheck($a) : undefined;
+            var h = listChkFlg.hash   ? hashCheck($a)   : undefined;
+            var p = listChkFlg.parm   ? parmCheck($a)   : undefined;
             setHover($a,d,h,p);
         });
 
         // popUpBox
         if(setPopBox()){
-            setElementCheckResult(listObj);
-            setTagCheckResult();
+            setElementCheckResult(listChkFlg);
+            setTagCheckResult(tagChkFlg);
         }
     }
 

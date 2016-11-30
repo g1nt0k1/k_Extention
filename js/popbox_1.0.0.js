@@ -1,7 +1,5 @@
 function setPopBox(){
-    console.log('fuga');
     if($(".popBox").length < 1){
-        console.log("hogehogehoge");
         var popbox = '<div class="popBox">'
                         + '<div class="pb_header clearfix">'
                             + '<h1 class="pb_title tb_center f_black">ページ情報一覧</h1>'

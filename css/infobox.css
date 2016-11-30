@@ -5,10 +5,6 @@
     clear:both;
 }
 
-.f_black{
-    color: #212121;
-}
-
 /* 天地の中央 */
 .tb_center{
     position: relative;
@@ -191,4 +187,8 @@
     margin-top: 10px;
     font-size: 16px;
     color: #283593;
+}
+
+.f_black{
+    color: #212121;
 }
