@@ -3,8 +3,13 @@
 body{
     width: 400px;
     height: 400px;
-    border:1px solid black;/*debug用*/
 }
+
+ul{
+    list-style: none;
+}
+
+.wf-Mako { font-family: 'Mako', sans-serif; }
 
 .center{
     position: relative;
@@ -22,13 +27,28 @@ body{
 label{
     display:block;
     font-size: 20px;
+}
+
+header{
     margin-bottom: 12px;
 }
 
+input{
+    margin-right: 14px;
+}
+
 h3.title{
-    font-size: 24px;
-    margin-top: 14px;
-    margin-bottom: 20px;
+    font-size: 36px;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    color: #303030;
+    text-align: center;
+    background-color: #C5E1A5;
+}
+
+.wrapper li{
+    margin-bottom: 16px;
+    color:#303030;
 }
 
 div#pageChecker{

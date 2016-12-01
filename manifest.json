@@ -1,10 +1,14 @@
 {
     "manifest_version": 2,
-    "name": "PagaChecker",
-    "description": "ページ診断のための拡張機能",
-    "version": "1.0.4",
+    "name": "PagaCheckNinja",
+    "version": "1.0.0",
+    "icons":{
+        "16":"./img/icon_16.png",
+        "32":"./img/icon_32.png",
+        "128":"./img/icon_128.png"
+    },
     "browser_action": {
-        "default_icon": "./icon_38.png",
+        "default_icon": "./img/icon_48.png",
         "default_popup":"./popup.html"
     },
     "content_scripts":[
@@ -13,7 +17,7 @@
                 "http://*/*",
                 "https://*/*"
             ],
-            "css":["./css/reset.css","./css/font-awesome.min.css","./css/balloon.css","./css/infobox.css"],
+            "css":["./css/reset.css","./css/balloon.css","./css/infobox.css"],
             "js":[
                 "./js/jquery-3.1.1.min.js",
                 "./js/jquery.balloon.js",
@@ -21,14 +25,6 @@
                 "./js/setElementCheckResult_1.0.0.js",
                 "./js/setTagCheckResult_1.0.0.js",
                 "./js/checker-version/checker-1.0.4.js"
-            ],
-            "web_accessible_resources":[
-                "./fonts/fontawesome-webfont.eot",
-                "./fonts/fontawesome-webfont.svg",
-                "./fonts/fontawesome-webfont.ttf",
-                "./fonts/fontawesome-webfont.woff",
-                "./fonts/fontawesome-webfont.woff2",
-                "./fonts/FontAwesome.otf"
             ]
         }
     ]
